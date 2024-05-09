@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# Getting Started with Hook Form + zod
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Install dependencies 
+```
+npm i react-hook-form zod @hookform/resolvers
+```
+* <b>React Hook Forms:</b> é uma biblioteca que auxiliará a organizar e padronizar as validações dos formulários por toda a aplicação. Ele cria validação de formulário simples, alinhado com os existentes dentro do próprio HTML, as validações suportadas são: required, min, max, maxlength, minlength, pattern, validate. Adotando o uso de entradas não controladas em vez de depender do estado. Essa abordagem torna os formulários mais eficientes e reduz o número de novas renderizações.
 
-## Available Scripts
+* <b>zod:</b> é uma biblioteca de declaração e validação de dados, ou “schema validation” em TypeScript. Dessa forma, é possível criar uma estrutura com os requisitos de dados que você deseja validar.
 
-In the project directory, you can run:
+* <b>@hookform/resolvers</b> que será responsável por associar nosso schema ao React Hook Form.
 
-### `npm start`
+[Tutorial de Validação de Formulário](https://medium.com/@rbgadotti/valida%C3%A7%C3%A3o-de-formul%C3%A1rio-com-zod-e-react-hook-form-garantindo-a-integridade-dos-dados-nos-seus-b1802aa329f1)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npm install -D tailwindcss postcss autoprefixer
+```
+* <b>postCSS</b> é uma ferramenta para pré-processar seu CSS com plugins JS. O PostCSS por si só não faz muita coisa. O que ele faz é prover um parser CSS e um framework para criar plugins.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* <b>autoprefixer</b> analisa seu CSS e adiciona prefixos e código para manter seu código CSS compatível com diversos browsers, enquanto você apenas escreve código que siga a especificação da W3C. Isso livra o arquivo de mixins (caso esteja usando Sass) e também de prefixos colocados na mão.
 
-### `npm test`
+```
+npx tailwind init -p
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Criar arquivos de configuração
