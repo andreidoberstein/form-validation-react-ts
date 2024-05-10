@@ -3,9 +3,12 @@ import './styles/global.css';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { supabase } from './lib/supabase';
 
 const createUserFormSchema = z.object({
-  avatar: z.instanceof(FileList),
+  avatar: z.instanceof(FileList)
+    .transform(list => list.item(0)!)
+    .refine(file => file!.size <= 5 * 1024 * 1024, 'O arquivo precisa ter 5MB'),
   name: z.string()
     .min(1, 'Nome é obrigatório')
     .transform(name => {
@@ -51,7 +54,18 @@ function App() {
     append({title: '', knowledge: 0})
   }
 
-  function createUser(data: CreateUserFormData) {
+  async function createUser(data: CreateUserFormData) {    
+    console.log(data.avatar);
+    let response = await supabase
+      .storage
+      .from('forms-react')
+      .upload(
+        data.avatar.name,
+        data.avatar
+      )
+
+    console.log(response.error);
+
     setOutput(JSON.stringify(data, null, 2));    
   }
 
@@ -62,10 +76,11 @@ function App() {
         className='flex flex-col gap-4'
       >
         <div className="flex flex-col gap-1">
-          <label htmlFor="name">Avatar</label>
+          <label htmlFor="avatar">Avatar</label>
           <input 
-            type="file"            
-            className='border border-zinc-200 shadow-sm rounded h-10 px-3 text-zinc-900'
+            type="file"
+            accept='image/*'           
+            // className='border border-zinc-200 shadow-sm rounded h-10 px-3 text-zinc-900'
             {...register('avatar')}
           />
           { errors.avatar && <span>{errors.avatar.message}</span> }
